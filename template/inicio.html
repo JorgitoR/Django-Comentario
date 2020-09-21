@@ -1,0 +1,143 @@
+{% extends 'base.html' %}
+
+{% block main %}
+
+
+<div class="main_div">
+	
+	{% for post in post %}
+	<article class="feed_one feed_principal">
+		
+		<header class="titulo_header">
+			<h2 class="big">
+				{{post.pregunta}}
+			</h2>	
+		</header>
+
+		<div class="feed_propiedad">
+			
+			<div class="feed_avatar">
+                <a style="background-image:url({{post.user.imgperfil.url}})" class="userAvatar " href=""></a>
+			</div>
+
+			<div class="feed_detalles">
+				<div class="feed_meta feed_meta_owner">
+					<a class="userOnline" style="display: flex;" href="">
+						{{post.user}}
+					</a>
+				</div>
+
+				<a href="{% url 'view_ipk' post.pk %}">
+				<button class="b_comentar">
+					Comentar
+				</button>
+				</a>
+
+			</div>
+
+		</div>
+
+	</article>
+
+	{% endfor %}
+
+</div>
+
+
+<style>
+	
+	.main_div{
+		width: 55%;
+		margin:100px auto;
+	}
+
+
+.feed_principal {
+    margin-bottom: 15px;
+    padding-bottom: 0.1px;
+}
+
+.feed_one {
+    padding: 15px 20px 0;
+    position: relative;
+}
+
+.feed_principal  {
+  background: #fff;
+  border-radius: 5px;
+}
+
+.titulo_header {
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.titulo_header[dir=feed] h2 {
+    margin-right: 5px;
+    margin-left: 0;
+}
+
+.titulo_header h2 {
+    font-weight: bold;
+    font-size: 19px;
+    display: inline;
+    margin-right: 5px;
+    line-height: 1.3;
+}
+
+
+.feed_propiedad {
+    display: table;
+    width: 100%;
+}
+.feed_avatar {
+    display: table-cell;
+    width: 45px;
+}
+
+.userAvatar{
+        background: transparent no-repeat 0 0;
+    background-size: 100%;
+    position: relative;
+    display: block;
+    margin-right: 15px;
+    float: left;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+}
+
+.feed_detalles, .streamItem_vip {
+    font-size: 12px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.feed_meta {
+  
+  color: #b2b2bb;
+
+}
+
+.feed_view {
+    overflow: hidden;
+    display: block;
+    margin: 12px -20px 0;
+}
+
+.b_comentar{
+	outline: none;
+	border:none;
+	padding: 10px;
+	color: #fff;
+	background: #333;
+	border-radius: 3px;
+	display: block;
+	margin: 7px 0;
+
+}
+
+</style>
+
+
+{% endblock %}
